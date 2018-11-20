@@ -71,6 +71,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BTRename = new System.Windows.Forms.Button();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GBRename.SuspendLayout();
             this.GBRemove.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUDRemoveTo)).BeginInit();
@@ -483,6 +484,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LVFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -497,6 +499,8 @@
             this.LVFiles.UseCompatibleStateImageBehavior = false;
             this.LVFiles.View = System.Windows.Forms.View.Details;
             this.LVFiles.SelectedIndexChanged += new System.EventHandler(this.LVFiles_SelectedIndexChanged);
+            this.LVFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.LVFiles_DragDrop);
+            this.LVFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.LVFiles_DragEnter);
             this.LVFiles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LVFiles_KeyDown);
             // 
             // columnHeader1
@@ -531,6 +535,11 @@
             this.BTRename.Text = "&Rename";
             this.BTRename.UseVisualStyleBackColor = true;
             this.BTRename.Click += new System.EventHandler(this.BTRename_Click);
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Path";
+            this.columnHeader6.Width = 0;
             // 
             // Renamer
             // 
@@ -624,6 +633,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button BTRename;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
 

@@ -42,6 +42,19 @@ namespace Renamer {
             Random rnd = new Random();
 
             LVFiles.Items.Add(new ListViewItem(new[] {rnd.Next(100).ToString(), rnd.Next(100).ToString(), rnd.Next(100).ToString(), rnd.Next(100).ToString()}));
+            LVFiles.Items.Add(new ListViewItem(new[] { rnd.Next(100).ToString(), rnd.Next(100).ToString(), rnd.Next(100).ToString(), rnd.Next(100).ToString() }));
+            LVFiles.Items.Add(new ListViewItem(new[] { rnd.Next(100).ToString(), rnd.Next(100).ToString(), rnd.Next(100).ToString(), rnd.Next(100).ToString() }));
+
+            Rename r = new Rename();
+
+            foreach(ListViewItem x in LVFiles.Items) {
+
+            }
+
+
+           // r.GetFiles(LVFiles.Items);
+
+            //LVFiles.Items.AddRange()
         }
 
 
@@ -93,12 +106,26 @@ namespace Renamer {
         }
 
         private void LVFiles_SelectedIndexChanged(object sender, EventArgs e) {
+            GetAllItems();
+        }
+
+        private void GetAllSelectedItems() {
             if (LVFiles.SelectedItems.Count > 0) {
-                for(int c = 0; c < LVFiles.SelectedItems.Count; c++) {
+                for (int c = 0; c < LVFiles.SelectedItems.Count; c++) {
                     for (int i = 0; i < LVFiles.SelectedItems[c].SubItems.Count; i++) {
                         Console.WriteLine(LVFiles.SelectedItems[c].SubItems[i].Text);
                     }
-                }                
+                }
+            }
+        }
+
+        private void GetAllItems() {
+            if (LVFiles.Items.Count > 0) {
+                for (int c = 0; c < LVFiles.Items.Count; c++) {
+                    for (int i = 0; i < LVFiles.Items[c].SubItems.Count; i++) {
+                        Console.WriteLine(LVFiles.Items[c].SubItems[i].Text);
+                    }
+                }
             }
         }
 
@@ -113,6 +140,45 @@ namespace Renamer {
                 foreach (ListViewItem item in LVFiles.Items) {
                     item.Selected = true;
                 }
+            }
+
+            foreach (ListViewItem lvItem in LVFiles.SelectedItems) {
+                LVFiles.Items.Remove(lvItem);
+            }
+        }
+
+        /// <summary>
+        /// Get and process droped files
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LVFiles_DragDrop(object sender, DragEventArgs e) {
+
+            // Check if the data dropped is one or more files
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
+
+                // Get the file pathes from the data object
+                string[] filePaths = (e.Data.GetData(DataFormats.FileDrop) as string[]);
+
+                foreach(string f in filePaths) {
+                    Console.WriteLine(f);
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Validate that's file that the user want to drop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LVFiles_DragEnter(object sender, DragEventArgs e) {
+
+            // Check if the data dropped is one or more files
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
+                e.Effect = DragDropEffects.Copy;
+            } else {
+                e.Effect = DragDropEffects.None;
             }
         }
     }
