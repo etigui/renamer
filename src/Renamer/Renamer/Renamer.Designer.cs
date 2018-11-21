@@ -68,6 +68,9 @@
             this.TSMIQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMICreated = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIAccessed = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIModified = new System.Windows.Forms.ToolStripMenuItem();
             this.LVFiles = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -79,12 +82,9 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BTRename = new System.Windows.Forms.Button();
-            this.TSMICreated = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIAccessed = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIModified = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CBAttributes = new System.Windows.Forms.CheckBox();
             this.CBTimestamps = new System.Windows.Forms.CheckBox();
+            this.CBAttributes = new System.Windows.Forms.CheckBox();
             this.BTClear = new System.Windows.Forms.Button();
             this.GBReplace.SuspendLayout();
             this.GBRemove.SuspendLayout();
@@ -103,6 +103,7 @@
             // 
             // GBReplace
             // 
+            this.GBReplace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GBReplace.Controls.Add(this.TBReplaceWith);
             this.GBReplace.Controls.Add(this.TBReplaceName);
             this.GBReplace.Controls.Add(this.label2);
@@ -164,6 +165,7 @@
             // 
             // GBRemove
             // 
+            this.GBRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GBRemove.Controls.Add(this.NUDRemoveTo);
             this.GBRemove.Controls.Add(this.NUDRemoveFrom);
             this.GBRemove.Controls.Add(this.label5);
@@ -261,6 +263,7 @@
             // 
             // GBAdd
             // 
+            this.GBAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GBAdd.Controls.Add(this.NUDAddAt);
             this.GBAdd.Controls.Add(this.label12);
             this.GBAdd.Controls.Add(this.TBAddInsert);
@@ -361,6 +364,7 @@
             // 
             // GBName
             // 
+            this.GBName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GBName.Controls.Add(this.CBNameAction);
             this.GBName.Controls.Add(this.TBNameRename);
             this.GBName.Controls.Add(this.label10);
@@ -422,6 +426,7 @@
             // 
             // GBExt
             // 
+            this.GBExt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GBExt.Controls.Add(this.CBExtAction);
             this.GBExt.Controls.Add(this.TBExtRename);
             this.GBExt.Controls.Add(this.label11);
@@ -515,13 +520,13 @@
             // TSMIAdd
             // 
             this.TSMIAdd.Name = "TSMIAdd";
-            this.TSMIAdd.Size = new System.Drawing.Size(180, 22);
+            this.TSMIAdd.Size = new System.Drawing.Size(120, 22);
             this.TSMIAdd.Text = "Add files";
             // 
             // TSMIQuit
             // 
             this.TSMIQuit.Name = "TSMIQuit";
-            this.TSMIQuit.Size = new System.Drawing.Size(180, 22);
+            this.TSMIQuit.Size = new System.Drawing.Size(120, 22);
             this.TSMIQuit.Text = "Quit";
             // 
             // TSMIEdit
@@ -539,13 +544,32 @@
             this.TSMIAccessed,
             this.TSMIModified});
             this.TSMIChange.Name = "TSMIChange";
-            this.TSMIChange.Size = new System.Drawing.Size(180, 22);
+            this.TSMIChange.Size = new System.Drawing.Size(142, 22);
             this.TSMIChange.Text = "Change time";
+            // 
+            // TSMICreated
+            // 
+            this.TSMICreated.Name = "TSMICreated";
+            this.TSMICreated.Size = new System.Drawing.Size(123, 22);
+            this.TSMICreated.Text = "Created";
+            // 
+            // TSMIAccessed
+            // 
+            this.TSMIAccessed.Name = "TSMIAccessed";
+            this.TSMIAccessed.Size = new System.Drawing.Size(123, 22);
+            this.TSMIAccessed.Text = "Accessed";
+            // 
+            // TSMIModified
+            // 
+            this.TSMIModified.Name = "TSMIModified";
+            this.TSMIModified.Size = new System.Drawing.Size(123, 22);
+            this.TSMIModified.Text = "Modified";
             // 
             // LVFiles
             // 
             this.LVFiles.AllowDrop = true;
-            this.LVFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.LVFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LVFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader6,
@@ -614,6 +638,7 @@
             // 
             // BTRename
             // 
+            this.BTRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BTRename.Location = new System.Drawing.Point(851, 685);
             this.BTRename.Name = "BTRename";
             this.BTRename.Size = new System.Drawing.Size(75, 46);
@@ -622,26 +647,9 @@
             this.BTRename.UseVisualStyleBackColor = true;
             this.BTRename.Click += new System.EventHandler(this.BTRename_Click);
             // 
-            // TSMICreated
-            // 
-            this.TSMICreated.Name = "TSMICreated";
-            this.TSMICreated.Size = new System.Drawing.Size(180, 22);
-            this.TSMICreated.Text = "Created";
-            // 
-            // TSMIAccessed
-            // 
-            this.TSMIAccessed.Name = "TSMIAccessed";
-            this.TSMIAccessed.Size = new System.Drawing.Size(180, 22);
-            this.TSMIAccessed.Text = "Accessed";
-            // 
-            // TSMIModified
-            // 
-            this.TSMIModified.Name = "TSMIModified";
-            this.TSMIModified.Size = new System.Drawing.Size(180, 22);
-            this.TSMIModified.Text = "Modified";
-            // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.CBTimestamps);
             this.groupBox1.Controls.Add(this.CBAttributes);
             this.groupBox1.Location = new System.Drawing.Point(199, 744);
@@ -651,28 +659,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File time an dattributes";
             // 
-            // CBAttributes
-            // 
-            this.CBAttributes.AutoSize = true;
-            this.CBAttributes.Location = new System.Drawing.Point(6, 43);
-            this.CBAttributes.Name = "CBAttributes";
-            this.CBAttributes.Size = new System.Drawing.Size(125, 17);
-            this.CBAttributes.TabIndex = 2;
-            this.CBAttributes.Text = "Change file attributes";
-            this.CBAttributes.UseVisualStyleBackColor = true;
-            // 
             // CBTimestamps
             // 
             this.CBTimestamps.AutoSize = true;
-            this.CBTimestamps.Location = new System.Drawing.Point(6, 66);
+            this.CBTimestamps.Location = new System.Drawing.Point(8, 66);
             this.CBTimestamps.Name = "CBTimestamps";
             this.CBTimestamps.Size = new System.Drawing.Size(134, 17);
             this.CBTimestamps.TabIndex = 3;
             this.CBTimestamps.Text = "Change file timestamps";
             this.CBTimestamps.UseVisualStyleBackColor = true;
+            this.CBTimestamps.CheckedChanged += new System.EventHandler(this.CBTimestamps_CheckedChanged);
+            // 
+            // CBAttributes
+            // 
+            this.CBAttributes.AutoSize = true;
+            this.CBAttributes.Location = new System.Drawing.Point(8, 40);
+            this.CBAttributes.Name = "CBAttributes";
+            this.CBAttributes.Size = new System.Drawing.Size(125, 17);
+            this.CBAttributes.TabIndex = 2;
+            this.CBAttributes.Text = "Change file attributes";
+            this.CBAttributes.UseVisualStyleBackColor = true;
+            this.CBAttributes.CheckedChanged += new System.EventHandler(this.CBAttributes_CheckedChanged);
             // 
             // BTClear
             // 
+            this.BTClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BTClear.Location = new System.Drawing.Point(851, 634);
             this.BTClear.Name = "BTClear";
             this.BTClear.Size = new System.Drawing.Size(75, 46);
@@ -698,7 +709,9 @@
             this.Controls.Add(this.GBReplace);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MSMenu;
+            this.MinimumSize = new System.Drawing.Size(954, 926);
             this.Name = "Renamer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Renamer";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.GBReplace.ResumeLayout(false);

@@ -297,5 +297,19 @@ namespace Renamer {
                 }
             }
         }
+
+        private void CBAttributes_CheckedChanged(object sender, EventArgs e) {
+            if (CBAttributes.Checked) {
+                Attributes attributes = new Attributes();
+                attributes.ShowDialog();
+            }
+        }
+
+        private void CBTimestamps_CheckedChanged(object sender, EventArgs e) {
+            if (CBTimestamps.Checked) {
+                Timestamps timestamps = new Timestamps();
+                timestamps.ShowDialog();
+            }
+        }
     }
 }
