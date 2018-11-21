@@ -24,12 +24,12 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Renamer));
-            this.GBRename = new System.Windows.Forms.GroupBox();
-            this.TBRenameWith = new System.Windows.Forms.TextBox();
-            this.TBRenameName = new System.Windows.Forms.TextBox();
+            this.GBReplace = new System.Windows.Forms.GroupBox();
+            this.TBReplaceWith = new System.Windows.Forms.TextBox();
+            this.TBReplaceName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.CBRename = new System.Windows.Forms.CheckBox();
+            this.CBReplace = new System.Windows.Forms.CheckBox();
             this.GBRemove = new System.Windows.Forms.GroupBox();
             this.NUDRemoveTo = new System.Windows.Forms.NumericUpDown();
             this.NUDRemoveFrom = new System.Windows.Forms.NumericUpDown();
@@ -41,7 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.CBRemove = new System.Windows.Forms.CheckBox();
             this.GBAdd = new System.Windows.Forms.GroupBox();
-            this.TBAddAt = new System.Windows.Forms.NumericUpDown();
+            this.NUDAddAt = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.TBAddInsert = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -63,56 +63,74 @@
             this.SSMessage = new System.Windows.Forms.StatusStrip();
             this.TSSLMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.MSMenu = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIChange = new System.Windows.Forms.ToolStripMenuItem();
             this.LVFiles = new System.Windows.Forms.ListView();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BTRename = new System.Windows.Forms.Button();
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.GBRename.SuspendLayout();
+            this.TSMICreated = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIAccessed = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIModified = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CBAttributes = new System.Windows.Forms.CheckBox();
+            this.CBTimestamps = new System.Windows.Forms.CheckBox();
+            this.BTClear = new System.Windows.Forms.Button();
+            this.GBReplace.SuspendLayout();
             this.GBRemove.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUDRemoveTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUDRemoveFrom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUDRemoveLast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUDRemoveFirst)).BeginInit();
             this.GBAdd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TBAddAt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDAddAt)).BeginInit();
             this.GBName.SuspendLayout();
             this.GBExt.SuspendLayout();
             this.SSMessage.SuspendLayout();
             this.MSMenu.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // GBRename
+            // GBReplace
             // 
-            this.GBRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.GBRename.Controls.Add(this.TBRenameWith);
-            this.GBRename.Controls.Add(this.TBRenameName);
-            this.GBRename.Controls.Add(this.label2);
-            this.GBRename.Controls.Add(this.label1);
-            this.GBRename.Controls.Add(this.CBRename);
-            this.GBRename.Location = new System.Drawing.Point(12, 623);
-            this.GBRename.Name = "GBRename";
-            this.GBRename.Size = new System.Drawing.Size(181, 115);
-            this.GBRename.TabIndex = 0;
-            this.GBRename.TabStop = false;
+            this.GBReplace.Controls.Add(this.TBReplaceWith);
+            this.GBReplace.Controls.Add(this.TBReplaceName);
+            this.GBReplace.Controls.Add(this.label2);
+            this.GBReplace.Controls.Add(this.label1);
+            this.GBReplace.Controls.Add(this.CBReplace);
+            this.GBReplace.Location = new System.Drawing.Point(12, 623);
+            this.GBReplace.Name = "GBReplace";
+            this.GBReplace.Size = new System.Drawing.Size(181, 115);
+            this.GBReplace.TabIndex = 0;
+            this.GBReplace.TabStop = false;
             // 
-            // TBRenameWith
+            // TBReplaceWith
             // 
-            this.TBRenameWith.Location = new System.Drawing.Point(68, 69);
-            this.TBRenameWith.Name = "TBRenameWith";
-            this.TBRenameWith.Size = new System.Drawing.Size(100, 20);
-            this.TBRenameWith.TabIndex = 4;
+            this.TBReplaceWith.Location = new System.Drawing.Point(68, 69);
+            this.TBReplaceWith.Name = "TBReplaceWith";
+            this.TBReplaceWith.Size = new System.Drawing.Size(100, 20);
+            this.TBReplaceWith.TabIndex = 4;
+            this.TBReplaceWith.TextChanged += new System.EventHandler(this.TBReplaceWith_TextChanged);
+            this.TBReplaceWith.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBReplaceWith_KeyPress);
             // 
-            // TBRenameName
+            // TBReplaceName
             // 
-            this.TBRenameName.Location = new System.Drawing.Point(68, 39);
-            this.TBRenameName.Name = "TBRenameName";
-            this.TBRenameName.Size = new System.Drawing.Size(100, 20);
-            this.TBRenameName.TabIndex = 3;
+            this.TBReplaceName.Location = new System.Drawing.Point(68, 39);
+            this.TBReplaceName.Name = "TBReplaceName";
+            this.TBReplaceName.Size = new System.Drawing.Size(100, 20);
+            this.TBReplaceName.TabIndex = 3;
+            this.TBReplaceName.TextChanged += new System.EventHandler(this.TBReplaceName_TextChanged);
+            this.TBReplaceName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBReplaceName_KeyPress);
             // 
             // label2
             // 
@@ -132,21 +150,20 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Replace:";
             // 
-            // CBRename
+            // CBReplace
             // 
-            this.CBRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CBRename.AutoSize = true;
-            this.CBRename.Location = new System.Drawing.Point(6, 0);
-            this.CBRename.Name = "CBRename";
-            this.CBRename.Size = new System.Drawing.Size(101, 17);
-            this.CBRename.TabIndex = 1;
-            this.CBRename.Text = "Rename (name)";
-            this.CBRename.UseVisualStyleBackColor = true;
-            this.CBRename.CheckedChanged += new System.EventHandler(this.CBRename_CheckedChanged);
+            this.CBReplace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CBReplace.AutoSize = true;
+            this.CBReplace.Location = new System.Drawing.Point(6, 0);
+            this.CBReplace.Name = "CBReplace";
+            this.CBReplace.Size = new System.Drawing.Size(101, 17);
+            this.CBReplace.TabIndex = 1;
+            this.CBReplace.Text = "Replace (name)";
+            this.CBReplace.UseVisualStyleBackColor = true;
+            this.CBReplace.CheckedChanged += new System.EventHandler(this.CBReplace_CheckedChanged);
             // 
             // GBRemove
             // 
-            this.GBRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GBRemove.Controls.Add(this.NUDRemoveTo);
             this.GBRemove.Controls.Add(this.NUDRemoveFrom);
             this.GBRemove.Controls.Add(this.label5);
@@ -168,6 +185,7 @@
             this.NUDRemoveTo.Name = "NUDRemoveTo";
             this.NUDRemoveTo.Size = new System.Drawing.Size(39, 20);
             this.NUDRemoveTo.TabIndex = 11;
+            this.NUDRemoveTo.ValueChanged += new System.EventHandler(this.NUDRemoveTo_ValueChanged);
             // 
             // NUDRemoveFrom
             // 
@@ -175,6 +193,7 @@
             this.NUDRemoveFrom.Name = "NUDRemoveFrom";
             this.NUDRemoveFrom.Size = new System.Drawing.Size(39, 20);
             this.NUDRemoveFrom.TabIndex = 10;
+            this.NUDRemoveFrom.ValueChanged += new System.EventHandler(this.NUDRemoveFrom_ValueChanged);
             // 
             // label5
             // 
@@ -200,6 +219,7 @@
             this.NUDRemoveLast.Name = "NUDRemoveLast";
             this.NUDRemoveLast.Size = new System.Drawing.Size(39, 20);
             this.NUDRemoveLast.TabIndex = 7;
+            this.NUDRemoveLast.ValueChanged += new System.EventHandler(this.NUDRemoveLast_ValueChanged);
             // 
             // NUDRemoveFirst
             // 
@@ -207,6 +227,7 @@
             this.NUDRemoveFirst.Name = "NUDRemoveFirst";
             this.NUDRemoveFirst.Size = new System.Drawing.Size(39, 20);
             this.NUDRemoveFirst.TabIndex = 6;
+            this.NUDRemoveFirst.ValueChanged += new System.EventHandler(this.NUDRemoveFirst_ValueChanged);
             // 
             // label3
             // 
@@ -240,8 +261,7 @@
             // 
             // GBAdd
             // 
-            this.GBAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.GBAdd.Controls.Add(this.TBAddAt);
+            this.GBAdd.Controls.Add(this.NUDAddAt);
             this.GBAdd.Controls.Add(this.label12);
             this.GBAdd.Controls.Add(this.TBAddInsert);
             this.GBAdd.Controls.Add(this.label9);
@@ -256,12 +276,13 @@
             this.GBAdd.TabIndex = 12;
             this.GBAdd.TabStop = false;
             // 
-            // TBAddAt
+            // NUDAddAt
             // 
-            this.TBAddAt.Location = new System.Drawing.Point(180, 77);
-            this.TBAddAt.Name = "TBAddAt";
-            this.TBAddAt.Size = new System.Drawing.Size(39, 20);
-            this.TBAddAt.TabIndex = 13;
+            this.NUDAddAt.Location = new System.Drawing.Point(180, 77);
+            this.NUDAddAt.Name = "NUDAddAt";
+            this.NUDAddAt.Size = new System.Drawing.Size(39, 20);
+            this.NUDAddAt.TabIndex = 13;
+            this.NUDAddAt.ValueChanged += new System.EventHandler(this.NUDAddAt_ValueChanged);
             // 
             // label12
             // 
@@ -278,6 +299,8 @@
             this.TBAddInsert.Name = "TBAddInsert";
             this.TBAddInsert.Size = new System.Drawing.Size(100, 20);
             this.TBAddInsert.TabIndex = 10;
+            this.TBAddInsert.TextChanged += new System.EventHandler(this.TBAddInsert_TextChanged);
+            this.TBAddInsert.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBAddInsert_KeyPress);
             // 
             // label9
             // 
@@ -294,6 +317,8 @@
             this.TBAddSufix.Name = "TBAddSufix";
             this.TBAddSufix.Size = new System.Drawing.Size(100, 20);
             this.TBAddSufix.TabIndex = 8;
+            this.TBAddSufix.TextChanged += new System.EventHandler(this.TBAddSufix_TextChanged);
+            this.TBAddSufix.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBAddSufix_KeyPress);
             // 
             // TBAddPrefix
             // 
@@ -301,6 +326,8 @@
             this.TBAddPrefix.Name = "TBAddPrefix";
             this.TBAddPrefix.Size = new System.Drawing.Size(100, 20);
             this.TBAddPrefix.TabIndex = 7;
+            this.TBAddPrefix.TextChanged += new System.EventHandler(this.TBAddPrefix_TextChanged);
+            this.TBAddPrefix.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBAddPrefix_KeyPress);
             // 
             // label7
             // 
@@ -334,7 +361,6 @@
             // 
             // GBName
             // 
-            this.GBName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GBName.Controls.Add(this.CBNameAction);
             this.GBName.Controls.Add(this.TBNameRename);
             this.GBName.Controls.Add(this.label10);
@@ -356,12 +382,13 @@
             "Reverse",
             "First to upper",
             "First to lower",
-            "Upper",
-            "Lower"});
+            "To upper",
+            "To lower"});
             this.CBNameAction.Location = new System.Drawing.Point(15, 40);
             this.CBNameAction.Name = "CBNameAction";
             this.CBNameAction.Size = new System.Drawing.Size(153, 21);
             this.CBNameAction.TabIndex = 13;
+            this.CBNameAction.SelectedIndexChanged += new System.EventHandler(this.CBNameAction_SelectedIndexChanged);
             // 
             // TBNameRename
             // 
@@ -369,6 +396,8 @@
             this.TBNameRename.Name = "TBNameRename";
             this.TBNameRename.Size = new System.Drawing.Size(100, 20);
             this.TBNameRename.TabIndex = 4;
+            this.TBNameRename.TextChanged += new System.EventHandler(this.TBNameRename_TextChanged);
+            this.TBNameRename.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBNameRename_KeyPress);
             // 
             // label10
             // 
@@ -393,12 +422,11 @@
             // 
             // GBExt
             // 
-            this.GBExt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GBExt.Controls.Add(this.CBExtAction);
             this.GBExt.Controls.Add(this.TBExtRename);
             this.GBExt.Controls.Add(this.label11);
             this.GBExt.Controls.Add(this.CBExt);
-            this.GBExt.Location = new System.Drawing.Point(848, 623);
+            this.GBExt.Location = new System.Drawing.Point(12, 744);
             this.GBExt.Name = "GBExt";
             this.GBExt.Size = new System.Drawing.Size(181, 115);
             this.GBExt.TabIndex = 14;
@@ -417,6 +445,7 @@
             this.CBExtAction.Name = "CBExtAction";
             this.CBExtAction.Size = new System.Drawing.Size(153, 21);
             this.CBExtAction.TabIndex = 13;
+            this.CBExtAction.SelectedIndexChanged += new System.EventHandler(this.CBExtAction_SelectedIndexChanged);
             // 
             // TBExtRename
             // 
@@ -424,6 +453,8 @@
             this.TBExtRename.Name = "TBExtRename";
             this.TBExtRename.Size = new System.Drawing.Size(100, 20);
             this.TBExtRename.TabIndex = 4;
+            this.TBExtRename.TextChanged += new System.EventHandler(this.TBExtRename_TextChanged);
+            this.TBExtRename.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBExtRename_KeyPress);
             // 
             // label11
             // 
@@ -450,9 +481,9 @@
             // 
             this.SSMessage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSSLMessage});
-            this.SSMessage.Location = new System.Drawing.Point(0, 748);
+            this.SSMessage.Location = new System.Drawing.Point(0, 866);
             this.SSMessage.Name = "SSMessage";
-            this.SSMessage.Size = new System.Drawing.Size(1173, 22);
+            this.SSMessage.Size = new System.Drawing.Size(938, 22);
             this.SSMessage.TabIndex = 15;
             this.SSMessage.Text = "statusStrip1";
             // 
@@ -464,24 +495,57 @@
             // MSMenu
             // 
             this.MSMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.TSMIFile,
+            this.TSMIEdit});
             this.MSMenu.Location = new System.Drawing.Point(0, 0);
             this.MSMenu.Name = "MSMenu";
-            this.MSMenu.Size = new System.Drawing.Size(1173, 24);
+            this.MSMenu.Size = new System.Drawing.Size(938, 24);
             this.MSMenu.TabIndex = 16;
             this.MSMenu.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // TSMIFile
             // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "&File";
+            this.TSMIFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMIAdd,
+            this.TSMIQuit});
+            this.TSMIFile.Name = "TSMIFile";
+            this.TSMIFile.Size = new System.Drawing.Size(37, 20);
+            this.TSMIFile.Text = "&File";
+            // 
+            // TSMIAdd
+            // 
+            this.TSMIAdd.Name = "TSMIAdd";
+            this.TSMIAdd.Size = new System.Drawing.Size(180, 22);
+            this.TSMIAdd.Text = "Add files";
+            // 
+            // TSMIQuit
+            // 
+            this.TSMIQuit.Name = "TSMIQuit";
+            this.TSMIQuit.Size = new System.Drawing.Size(180, 22);
+            this.TSMIQuit.Text = "Quit";
+            // 
+            // TSMIEdit
+            // 
+            this.TSMIEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMIChange});
+            this.TSMIEdit.Name = "TSMIEdit";
+            this.TSMIEdit.Size = new System.Drawing.Size(39, 20);
+            this.TSMIEdit.Text = "&Edit";
+            // 
+            // TSMIChange
+            // 
+            this.TSMIChange.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMICreated,
+            this.TSMIAccessed,
+            this.TSMIModified});
+            this.TSMIChange.Name = "TSMIChange";
+            this.TSMIChange.Size = new System.Drawing.Size(180, 22);
+            this.TSMIChange.Text = "Change time";
             // 
             // LVFiles
             // 
             this.LVFiles.AllowDrop = true;
-            this.LVFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.LVFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LVFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader6,
@@ -489,24 +553,31 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
-            this.columnHeader5});
+            this.columnHeader5,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
             this.LVFiles.FullRowSelect = true;
             this.LVFiles.GridLines = true;
             this.LVFiles.Location = new System.Drawing.Point(0, 27);
             this.LVFiles.Name = "LVFiles";
-            this.LVFiles.Size = new System.Drawing.Size(1173, 587);
+            this.LVFiles.Size = new System.Drawing.Size(938, 587);
             this.LVFiles.TabIndex = 17;
             this.LVFiles.UseCompatibleStateImageBehavior = false;
             this.LVFiles.View = System.Windows.Forms.View.Details;
-            this.LVFiles.SelectedIndexChanged += new System.EventHandler(this.LVFiles_SelectedIndexChanged);
             this.LVFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.LVFiles_DragDrop);
             this.LVFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.LVFiles_DragEnter);
             this.LVFiles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LVFiles_KeyDown);
             // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Path";
+            this.columnHeader6.Width = 0;
+            // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Name";
-            this.columnHeader1.Width = 400;
+            this.columnHeader1.Width = 350;
             // 
             // columnHeader2
             // 
@@ -515,7 +586,7 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "New name";
-            this.columnHeader3.Width = 400;
+            this.columnHeader3.Width = 350;
             // 
             // columnHeader4
             // 
@@ -526,26 +597,96 @@
             this.columnHeader5.Text = "Size";
             this.columnHeader5.Width = 114;
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Created time";
+            this.columnHeader7.Width = 115;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Accessed time";
+            this.columnHeader8.Width = 115;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Modified time";
+            this.columnHeader9.Width = 115;
+            // 
             // BTRename
             // 
-            this.BTRename.Location = new System.Drawing.Point(1057, 645);
+            this.BTRename.Location = new System.Drawing.Point(851, 685);
             this.BTRename.Name = "BTRename";
-            this.BTRename.Size = new System.Drawing.Size(90, 75);
+            this.BTRename.Size = new System.Drawing.Size(75, 46);
             this.BTRename.TabIndex = 18;
             this.BTRename.Text = "&Rename";
             this.BTRename.UseVisualStyleBackColor = true;
             this.BTRename.Click += new System.EventHandler(this.BTRename_Click);
             // 
-            // columnHeader6
+            // TSMICreated
             // 
-            this.columnHeader6.Text = "Path";
-            this.columnHeader6.Width = 0;
+            this.TSMICreated.Name = "TSMICreated";
+            this.TSMICreated.Size = new System.Drawing.Size(180, 22);
+            this.TSMICreated.Text = "Created";
+            // 
+            // TSMIAccessed
+            // 
+            this.TSMIAccessed.Name = "TSMIAccessed";
+            this.TSMIAccessed.Size = new System.Drawing.Size(180, 22);
+            this.TSMIAccessed.Text = "Accessed";
+            // 
+            // TSMIModified
+            // 
+            this.TSMIModified.Name = "TSMIModified";
+            this.TSMIModified.Size = new System.Drawing.Size(180, 22);
+            this.TSMIModified.Text = "Modified";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CBTimestamps);
+            this.groupBox1.Controls.Add(this.CBAttributes);
+            this.groupBox1.Location = new System.Drawing.Point(199, 744);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(146, 115);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "File time an dattributes";
+            // 
+            // CBAttributes
+            // 
+            this.CBAttributes.AutoSize = true;
+            this.CBAttributes.Location = new System.Drawing.Point(6, 43);
+            this.CBAttributes.Name = "CBAttributes";
+            this.CBAttributes.Size = new System.Drawing.Size(125, 17);
+            this.CBAttributes.TabIndex = 2;
+            this.CBAttributes.Text = "Change file attributes";
+            this.CBAttributes.UseVisualStyleBackColor = true;
+            // 
+            // CBTimestamps
+            // 
+            this.CBTimestamps.AutoSize = true;
+            this.CBTimestamps.Location = new System.Drawing.Point(6, 66);
+            this.CBTimestamps.Name = "CBTimestamps";
+            this.CBTimestamps.Size = new System.Drawing.Size(134, 17);
+            this.CBTimestamps.TabIndex = 3;
+            this.CBTimestamps.Text = "Change file timestamps";
+            this.CBTimestamps.UseVisualStyleBackColor = true;
+            // 
+            // BTClear
+            // 
+            this.BTClear.Location = new System.Drawing.Point(851, 634);
+            this.BTClear.Name = "BTClear";
+            this.BTClear.Size = new System.Drawing.Size(75, 46);
+            this.BTClear.TabIndex = 19;
+            this.BTClear.Text = "Clear";
+            this.BTClear.UseVisualStyleBackColor = true;
             // 
             // Renamer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 770);
+            this.ClientSize = new System.Drawing.Size(938, 888);
+            this.Controls.Add(this.BTClear);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BTRename);
             this.Controls.Add(this.LVFiles);
             this.Controls.Add(this.SSMessage);
@@ -554,14 +695,14 @@
             this.Controls.Add(this.GBName);
             this.Controls.Add(this.GBAdd);
             this.Controls.Add(this.GBRemove);
-            this.Controls.Add(this.GBRename);
+            this.Controls.Add(this.GBReplace);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MSMenu;
             this.Name = "Renamer";
             this.Text = "Renamer";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.GBRename.ResumeLayout(false);
-            this.GBRename.PerformLayout();
+            this.GBReplace.ResumeLayout(false);
+            this.GBReplace.PerformLayout();
             this.GBRemove.ResumeLayout(false);
             this.GBRemove.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUDRemoveTo)).EndInit();
@@ -570,7 +711,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUDRemoveFirst)).EndInit();
             this.GBAdd.ResumeLayout(false);
             this.GBAdd.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TBAddAt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDAddAt)).EndInit();
             this.GBName.ResumeLayout(false);
             this.GBName.PerformLayout();
             this.GBExt.ResumeLayout(false);
@@ -579,6 +720,8 @@
             this.SSMessage.PerformLayout();
             this.MSMenu.ResumeLayout(false);
             this.MSMenu.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -586,11 +729,11 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox GBRename;
-        private System.Windows.Forms.CheckBox CBRename;
+        private System.Windows.Forms.GroupBox GBReplace;
+        private System.Windows.Forms.CheckBox CBReplace;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TBRenameWith;
-        private System.Windows.Forms.TextBox TBRenameName;
+        private System.Windows.Forms.TextBox TBReplaceWith;
+        private System.Windows.Forms.TextBox TBReplaceName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox GBRemove;
         private System.Windows.Forms.Label label3;
@@ -620,12 +763,12 @@
         private System.Windows.Forms.TextBox TBExtRename;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox CBExt;
-        private System.Windows.Forms.NumericUpDown TBAddAt;
+        private System.Windows.Forms.NumericUpDown NUDAddAt;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.StatusStrip SSMessage;
         private System.Windows.Forms.ToolStripStatusLabel TSSLMessage;
         private System.Windows.Forms.MenuStrip MSMenu;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSMIFile;
         private System.Windows.Forms.ListView LVFiles;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -634,6 +777,20 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button BTRename;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ToolStripMenuItem TSMIQuit;
+        private System.Windows.Forms.ToolStripMenuItem TSMIAdd;
+        private System.Windows.Forms.ToolStripMenuItem TSMIEdit;
+        private System.Windows.Forms.ToolStripMenuItem TSMIChange;
+        private System.Windows.Forms.ToolStripMenuItem TSMICreated;
+        private System.Windows.Forms.ToolStripMenuItem TSMIAccessed;
+        private System.Windows.Forms.ToolStripMenuItem TSMIModified;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox CBAttributes;
+        private System.Windows.Forms.CheckBox CBTimestamps;
+        private System.Windows.Forms.Button BTClear;
     }
 }
 
