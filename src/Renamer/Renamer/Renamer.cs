@@ -43,7 +43,29 @@ namespace Renamer {
 
         #region Controls
         private void BTRename_Click(object sender, EventArgs e) {
-      
+            DialogResult dialogResult = MessageBox.Show($"{LVFiles.Items.Count} files are about to be renamed. Do you want to continue ?", "Rename files", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (dialogResult == DialogResult.Yes) {
+                rename.RenameFiles(LVFiles.Items);
+                LVFiles.Items.Clear();
+            }
+        }
+
+        private void BTClear_Click(object sender, EventArgs e) {
+            CBNameAction.SelectedIndex = -1;
+            CBExtAction.SelectedIndex = -1;
+            TBNameRename.Text = String.Empty;
+            TBReplaceName.Text = String.Empty;
+            TBReplaceWith.Text = String.Empty;
+            TBAddPrefix.Text = String.Empty;
+            TBAddSufix.Text = String.Empty;
+            TBAddInsert.Text = String.Empty;
+            TBExtRename.Text = String.Empty;
+            NUDRemoveFirst.Value = 0;
+            NUDRemoveLast.Value = 0;
+            NUDRemoveFrom.Value = 0;
+            NUDRemoveTo.Value = 0;
+            NUDAddAt.Value = 0;
+            LVFiles.Clear();
         }
 
         #region Even drag drop listview
@@ -269,6 +291,10 @@ namespace Renamer {
         #endregion
         #endregion
 
+
+        /// <summary>
+        /// Generate new name every time the option change
+        /// </summary>
         private void ProcessNewNameAndExt() {
             if (LVFiles.Items.Count > 0) {
                 for (int c = 0; c < LVFiles.Items.Count; c++) {
@@ -295,20 +321,6 @@ namespace Renamer {
                     LVFiles.Items[c].SubItems[3].Text = name.ToString();
                     LVFiles.Items[c].SubItems[4].Text = extension.ToString();
                 }
-            }
-        }
-
-        private void CBAttributes_CheckedChanged(object sender, EventArgs e) {
-            if (CBAttributes.Checked) {
-                Attributes attributes = new Attributes();
-                attributes.ShowDialog();
-            }
-        }
-
-        private void CBTimestamps_CheckedChanged(object sender, EventArgs e) {
-            if (CBTimestamps.Checked) {
-                Timestamps timestamps = new Timestamps();
-                timestamps.ShowDialog();
             }
         }
     }

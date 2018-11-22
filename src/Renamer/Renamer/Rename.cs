@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Renamer {
     class Rename {
 
-        private readonly string[] SizeSuffixes = {"bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"};
+        private readonly string[] SizeSuffixes = { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
 
         /// <summary>
         /// Add and prepare new files for the listview
@@ -20,15 +20,50 @@ namespace Renamer {
 
             List<ListViewItem> items = new List<ListViewItem>();
             foreach (string file in files) {
-                Tuple<string,string> nameAndExt = GetFileNameAndExt(file);
-                items.Add(new ListViewItem(new[] { file, nameAndExt.Item1, nameAndExt.Item2, nameAndExt.Item1, nameAndExt.Item2, GetFileSize(file), GetFileCreationTime(file), GetFileLastAccessTime(file), GetFileLastWriteTime(file)}));
+                Tuple<string, string> nameAndExt = GetFileNameAndExt(file);
+                items.Add(new ListViewItem(new[] { file, nameAndExt.Item1, nameAndExt.Item2, nameAndExt.Item1, nameAndExt.Item2, GetFileSize(file), GetFileCreationTime(file), GetFileLastAccessTime(file), GetFileLastWriteTime(file) }));
             }
             return items.ToArray();
         }
 
-        public void RenameFiles() {
-            //TODO Check if 2 or more files are the same (full path) (rename only one)
-            //TODO Check if file exist
+
+        /// <summary>
+        /// Rename all files from listview
+        /// </summary>
+        /// <param name="items"></param>
+        public void RenameFiles(ListView.ListViewItemCollection items) {
+
+            // Process listview items
+            List<ToRename> toRenames = new List<ToRename>();
+            if (items.Count > 0) {
+                for (int c = 0; c < items.Count; c++) {
+                    string pathFrom = items[c].SubItems[0].Text;
+                    string directoryFrom = Path.GetDirectoryName(pathFrom);
+                    // If 2 or more files are the same (full path) (rename only one)
+                    if (toRenames.Find(tr => (tr.PathFrom == pathFrom)) == null) {
+                        toRenames.Add(new ToRename(pathFrom, Path.Combine(directoryFrom, $"{items[c].SubItems[3].Text}{items[c].SubItems[4].Text}")));
+                    }
+                }
+            }
+
+            // Rename file
+            foreach(ToRename ToRename in toRenames) {
+                try {
+                    if (File.Exists(ToRename.PathFrom)) {
+                        if (!File.Exists(ToRename.PathTo)) {
+                            File.Move(ToRename.PathFrom, ToRename.PathTo);
+                        } else {
+
+                            // Check if change the extention (uppercase, lowercase)
+                            if (Path.GetExtension(ToRename.PathFrom) != Path.GetExtension(ToRename.PathTo)) {
+                                string radomFile = Path.GetRandomFileName();
+                                File.Move(ToRename.PathFrom, radomFile);
+                                File.Move(radomFile, ToRename.PathTo);
+                            }
+                        }
+                    }
+                } catch { }
+            }
         }
 
         #region New files name and extension
@@ -43,7 +78,7 @@ namespace Renamer {
         public string GetReplace(string name, string replace, string with) {
             try {
                 return name.Replace(replace, with);
-            }catch(ArgumentException) {
+            } catch (ArgumentException) {
                 return name;
             }
         }
@@ -59,7 +94,7 @@ namespace Renamer {
         /// <returns></returns>
         public string GetRemove(string name, int fromFisrt, int fromLast, int from, int to) {
 
-            if(fromFisrt <= name.Length) {
+            if (fromFisrt <= name.Length) {
                 name = fromFisrt > 0 ? name.Substring(fromFisrt) : name;
             }
 
@@ -92,20 +127,20 @@ namespace Renamer {
             name = string.Format("{0}" + name + "{1}", prefix, sufix);
 
             // Check if we pass the max file name length
-            if(at <= name.Length) {
+            if (at <= name.Length) {
                 name = name.Insert(at, insert);
             } else {
 
                 // Get the new position and remove the last char
                 int x = at - name.Length;
-                if(insert.Length - x >= 0) {
+                if (insert.Length - x >= 0) {
                     insert = insert.Remove(insert.Length - x);
                     name = name.Insert(at - x, insert);
                 }
             }
-            
+
             return name;
-            
+
         }
 
         /// <summary>
@@ -116,9 +151,9 @@ namespace Renamer {
         /// <param name="rename"></param>
         /// <returns></returns>
         public string GetName(string name, string action, string rename = "") {
-            if(action == "Remove") {
+            if (action == "Remove") {
                 return String.Empty;
-            } else if(action == "Rename") {
+            } else if (action == "Rename") {
                 return rename;
             } else if (action == "Reverse") {
                 if (name == null) return String.Empty;
@@ -148,7 +183,7 @@ namespace Renamer {
         public string GetExt(string extension, string action, string rename = "") {
             if (action == "Remove") {
                 return String.Empty;
-            }else if (action == "Rename") {
+            } else if (action == "Rename") {
                 return $".{rename}";
             } else if (action == "To upper") {
                 return extension.ToUpper();
@@ -213,5 +248,19 @@ namespace Renamer {
             return String.Format("{0} {1}", adjustedSize, SizeSuffixes[mag]);
         }
         #endregion
+    }
+
+    public class ToRename{
+
+        private string pathFrom = String.Empty;
+        private string pathTo = string.Empty;
+
+        public ToRename(string pathFrom, string pathTo) {
+            this.pathFrom = pathFrom;
+            this.pathTo = pathTo;
+        }
+
+        public string PathFrom { get => pathFrom;}
+        public string PathTo { get => pathTo;}
     }
 }
