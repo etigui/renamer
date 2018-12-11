@@ -1,6 +1,6 @@
 # File renamer
 
-With this program you can rename a bunch of files at the same time. You can add files with the file menu or drag and drop them in the list view.
+With this program you can rename a bunch of files at the same time. You can add files with the `file` menu or `drag and drop` them in the list view.
 
 <p align="middle" ><img src="/images/renamer.png" alt="Renamer prog" width="800"></p>
 
