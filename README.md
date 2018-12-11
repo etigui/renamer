@@ -14,6 +14,5 @@ When you use option, you can see the new name and extension in the list view at 
 <p align="middle" ><img src="/images/renamer.png" alt="Renamer prog" width="850"></p>
 
 ## Get exec
-
-<a href="/src/Renamer/Renamer/bin/Release/Renamer.exe" download>Renamer.exe</a>
-
+Ricgt click -> save as. click save at
+[Renamer.exe](/src/Renamer/Renamer/bin/Release/Renamer.exe)
