@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace Renamer {
     class Rename {
 
         private readonly string[] SizeSuffixes = { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+
+        public bool InvokeRequired { get; private set; }
 
         /// <summary>
         /// Add and prepare new files for the listview
@@ -26,22 +29,47 @@ namespace Renamer {
             return items.ToArray();
         }
 
+        #region Rename files
+
+        /// <summary>
+        /// Get listview item without blocking the UI
+        /// </summary>
+        /// <param name="lv"></param>
+        /// <param name="item"></param>
+        /// <param name="subItem"></param>
+        /// <returns></returns>
+        public string GetLVItem(ListView lv, int item, int subItem) {
+            string lvi = string.Empty;
+            if (lv.InvokeRequired) {
+                lv.Invoke(new MethodInvoker(delegate {
+                    lvi = lv.Items[item].SubItems[subItem].Text;
+                }));
+            }
+            return lvi;            
+        }
 
         /// <summary>
         /// Rename all files from listview
         /// </summary>
         /// <param name="items"></param>
-        public void RenameFiles(ListView.ListViewItemCollection items) {
+        //public void RenameFiles(ListView.ListViewItemCollection items) {
+        public void RenameFiles(ListView lv) {
 
             // Process listview items
             List<ToRename> toRenames = new List<ToRename>();
-            if (items.Count > 0) {
-                for (int c = 0; c < items.Count; c++) {
-                    string pathFrom = items[c].SubItems[0].Text;
+            if (lv.Items.Count > 0) {
+                for (int c = 0; c < lv.Items.Count; c++) {
+
+                    string pathFrom  = GetLVItem(lv, c, 0);
+                    //string pathFrom = items[c].SubItems[0].Text;
                     string directoryFrom = Path.GetDirectoryName(pathFrom);
                     // If 2 or more files are the same (full path) (rename only one)
                     if (toRenames.Find(tr => (tr.PathFrom == pathFrom)) == null) {
-                        toRenames.Add(new ToRename(pathFrom, Path.Combine(directoryFrom, $"{items[c].SubItems[3].Text}{items[c].SubItems[4].Text}")));
+
+                        string rename1 = GetLVItem(lv, c, 3);
+                        string rename2 = GetLVItem(lv, c, 4);
+                        //toRenames.Add(new ToRename(pathFrom, Path.Combine(directoryFrom, $"{items[c].SubItems[3].Text}{items[c].SubItems[4].Text}")));
+                        toRenames.Add(new ToRename(pathFrom, Path.Combine(directoryFrom, $"{rename1}{rename2}")));
                     }
                 }
             }
@@ -65,6 +93,8 @@ namespace Renamer {
                 } catch { }
             }
         }
+
+        #endregion
 
         #region New files name and extension
 

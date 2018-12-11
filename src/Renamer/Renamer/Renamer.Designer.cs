@@ -78,6 +78,7 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BTRename = new System.Windows.Forms.Button();
             this.BTClear = new System.Windows.Forms.Button();
+            this.BW = new System.ComponentModel.BackgroundWorker();
             this.GBReplace.SuspendLayout();
             this.GBRemove.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUDRemoveTo)).BeginInit();
@@ -512,12 +513,14 @@
             this.TSMIAdd.Name = "TSMIAdd";
             this.TSMIAdd.Size = new System.Drawing.Size(180, 22);
             this.TSMIAdd.Text = "Add files";
+            this.TSMIAdd.Click += new System.EventHandler(this.TSMIAdd_Click);
             // 
             // TSMIQuit
             // 
             this.TSMIQuit.Name = "TSMIQuit";
             this.TSMIQuit.Size = new System.Drawing.Size(180, 22);
             this.TSMIQuit.Text = "Quit";
+            this.TSMIQuit.Click += new System.EventHandler(this.TSMIQuit_Click);
             // 
             // LVFiles
             // 
@@ -593,6 +596,7 @@
             // BTRename
             // 
             this.BTRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BTRename.Enabled = false;
             this.BTRename.Location = new System.Drawing.Point(1035, 736);
             this.BTRename.Name = "BTRename";
             this.BTRename.Size = new System.Drawing.Size(75, 46);
@@ -604,6 +608,7 @@
             // BTClear
             // 
             this.BTClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BTClear.Enabled = false;
             this.BTClear.Location = new System.Drawing.Point(1035, 788);
             this.BTClear.Name = "BTClear";
             this.BTClear.Size = new System.Drawing.Size(75, 46);
@@ -611,6 +616,11 @@
             this.BTClear.Text = "Clear";
             this.BTClear.UseVisualStyleBackColor = true;
             this.BTClear.Click += new System.EventHandler(this.BTClear_Click);
+            // 
+            // BW
+            // 
+            this.BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BW_DoWork);
+            this.BW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BW_RunWorkerCompleted);
             // 
             // Renamer
             // 
@@ -633,6 +643,7 @@
             this.Name = "Renamer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Renamer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Renamer_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.GBReplace.ResumeLayout(false);
             this.GBReplace.PerformLayout();
@@ -714,6 +725,7 @@
         private System.Windows.Forms.ToolStripMenuItem TSMIQuit;
         private System.Windows.Forms.ToolStripMenuItem TSMIAdd;
         private System.Windows.Forms.Button BTClear;
+        private System.ComponentModel.BackgroundWorker BW;
     }
 }
 

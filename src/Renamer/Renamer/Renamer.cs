@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace Renamer {
         #region Vars
         private Rename rename = new Rename();
         private char[] invalidFileChars = Path.GetInvalidFileNameChars();
+        private bool loading = false;
         #endregion
 
         #region Init
@@ -42,11 +44,42 @@ namespace Renamer {
         #endregion
 
         #region Controls
+
+        /// <summary>
+        /// Rename files
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BTRename_Click(object sender, EventArgs e) {
-            DialogResult dialogResult = MessageBox.Show($"{LVFiles.Items.Count} files are about to be renamed. Do you want to continue ?", "Rename files", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (dialogResult == DialogResult.Yes) {
-                rename.RenameFiles(LVFiles.Items);
-                LVFiles.Items.Clear();
+   
+            // Rename if files
+            if (LVFiles.Items.Count > 0) {
+                DialogResult dialogResult = MessageBox.Show($"{LVFiles.Items.Count} files are about to be renamed. Do you want to continue ?", "Rename files", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (dialogResult == DialogResult.Yes) {
+
+                    // Start (processing files) thread
+                    loading = true;
+                    new Thread(Loading).Start();
+                    BW.RunWorkerAsync();
+                    BTClear.Enabled = false;
+                    BTRename.Enabled = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add new files
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TSMIAdd_Click(object sender, EventArgs e) {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = true;
+            if (ofd.ShowDialog() == DialogResult.OK) {
+                LVFiles.Items.AddRange(rename.AddNewFiles(ofd.FileNames));
+                ProcessNewNameAndExt();
+                CheckOptionEnable();
+                BTClear.Enabled = true;
             }
         }
 
@@ -65,7 +98,8 @@ namespace Renamer {
             NUDRemoveFrom.Value = 0;
             NUDRemoveTo.Value = 0;
             NUDAddAt.Value = 0;
-            LVFiles.Clear();
+            LVFiles.Items.Clear();
+            BTClear.Enabled = false;
         }
 
         #region Even drag drop listview
@@ -84,6 +118,8 @@ namespace Renamer {
                 string[] files = (e.Data.GetData(DataFormats.FileDrop) as string[]);
                 LVFiles.Items.AddRange(rename.AddNewFiles(files));
                 ProcessNewNameAndExt();
+                BTClear.Enabled = true;
+                CheckOptionEnable();
             }
         }
 
@@ -242,26 +278,31 @@ namespace Renamer {
         private void CBReplace_CheckedChanged(object sender, EventArgs e) {
             ModifyGroupControls(CBReplace, GBReplace);
             ProcessNewNameAndExt();
+            CheckOptionEnable();
         }
 
         private void CBRemove_CheckedChanged(object sender, EventArgs e) {
             ModifyGroupControls(CBRemove, GBRemove);
             ProcessNewNameAndExt();
+            CheckOptionEnable();
         }
 
         private void CBAdd_CheckedChanged(object sender, EventArgs e) {
             ModifyGroupControls(CBAdd, GBAdd);
             ProcessNewNameAndExt();
+            CheckOptionEnable();
         }
 
         private void CBName_CheckedChanged(object sender, EventArgs e) {
             ModifyGroupControls(CBName, GBName);
             ProcessNewNameAndExt();
+            CheckOptionEnable();
         }
 
         private void CBExt_CheckedChanged(object sender, EventArgs e) {
             ModifyGroupControls(CBExt, GBExt);
             ProcessNewNameAndExt();
+            CheckOptionEnable();
         }
 
         /// <summary>
@@ -288,7 +329,38 @@ namespace Renamer {
             gb.Enabled = cb.Checked;
         }
 
+        /// <summary>
+        /// Check if checkbox option selected
+        /// </summary>
+        private void CheckOptionEnable() {
+
+            bool controlChecked = false;
+
+            foreach (Control c in this.Controls) {
+                if (c is CheckBox) {
+                    if (((CheckBox)c).Checked) {
+                        controlChecked = true;
+                    }
+                }
+            }
+            if (controlChecked && LVFiles.Items.Count > 0) {
+                BTRename.Enabled = true;
+            } else {
+                BTRename.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Quit application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TSMIQuit_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
         #endregion
+
         #endregion
 
 
@@ -322,6 +394,62 @@ namespace Renamer {
                     LVFiles.Items[c].SubItems[4].Text = extension.ToString();
                 }
             }
+        }
+
+        #region Processing files thread
+
+        /// <summary>
+        /// Update tooltips message while loading
+        /// </summary>
+        /// <param name="text"></param>
+        private void UpdateControls(string text) {
+            if (InvokeRequired) {
+                this.Invoke((MethodInvoker)delegate () { UpdateControls(text); });
+                return;
+            }
+            TSSLMessage.Text = text;
+        }
+
+        /// <summary>
+        /// Executed on a seperate thread and doesn't block the UI while sleeping
+        /// </summary>
+        private void Loading() {
+            StringBuilder sb = new StringBuilder("Processing files");
+            while (loading) {
+                if(sb.Length >= 16 && sb.Length <= 21) {
+                    sb.Append(".");
+                } else {
+                    sb.Clear().Append("Processing files");
+                }
+                UpdateControls(sb.ToString());
+                Thread.Sleep(500);
+            }
+        }
+        #endregion
+
+        #region Rename file worker
+
+        private void BW_DoWork(object sender, DoWorkEventArgs e) {
+            //rename.RenameFiles(LVFiles.Items);
+            rename.RenameFiles(LVFiles);
+        }
+
+        private void BW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            loading = false;
+            BTClear.Enabled = true;
+            BTRename.Enabled = true;
+            TSSLMessage.Text = "Done";
+            LVFiles.Items.Clear();
+        }
+        #endregion
+
+        /// <summary>
+        /// Prevent error access UI controls by thread
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Renamer_FormClosing(object sender, FormClosingEventArgs e) {
+            loading = false;
         }
     }
 }
