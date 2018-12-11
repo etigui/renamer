@@ -17,6 +17,7 @@ namespace Renamer {
         private Rename rename = new Rename();
         private char[] invalidFileChars = Path.GetInvalidFileNameChars();
         private bool loading = false;
+        private const char Backspace = '\u0008';
         #endregion
 
         #region Init
@@ -231,44 +232,65 @@ namespace Renamer {
         #region Even keypress escape file invalid char
 
         private void TBReplaceName_KeyPress(object sender, KeyPressEventArgs e) {
-            if (invalidFileChars.Contains(e.KeyChar)) {
-                e.Handled = true;
+            if (e.KeyChar == Backspace) {
+            } else {
+                if (invalidFileChars.Contains(e.KeyChar)) {
+                    e.Handled = true;
+                }
             }
         }
 
         private void TBReplaceWith_KeyPress(object sender, KeyPressEventArgs e) {
-            if (invalidFileChars.Contains(e.KeyChar)) {
-                e.Handled = true;
+            if (e.KeyChar == Backspace) {
+            } else {
+                if (invalidFileChars.Contains(e.KeyChar)) {
+                    e.Handled = true;
+                }
             }
         }
 
         private void TBAddPrefix_KeyPress(object sender, KeyPressEventArgs e) {
-            if (invalidFileChars.Contains(e.KeyChar)) {
-                e.Handled = true;
+            if (e.KeyChar == Backspace) {
+            } else {
+                if (invalidFileChars.Contains(e.KeyChar)) {
+                    e.Handled = true;
+                }
             }
         }
 
         private void TBAddSufix_KeyPress(object sender, KeyPressEventArgs e) {
-            if (invalidFileChars.Contains(e.KeyChar)) {
-                e.Handled = true;
+            if (e.KeyChar == Backspace) {
+            } else {
+                if (invalidFileChars.Contains(e.KeyChar)) {
+                    e.Handled = true;
+                }
             }
         }
 
         private void TBAddInsert_KeyPress(object sender, KeyPressEventArgs e) {
-            if (invalidFileChars.Contains(e.KeyChar)) {
-                e.Handled = true;
+            if (e.KeyChar == Backspace) {
+            } else {
+                if (invalidFileChars.Contains(e.KeyChar)) {
+                    e.Handled = true;
+                }
             }
         }
 
         private void TBNameRename_KeyPress(object sender, KeyPressEventArgs e) {
-            if (invalidFileChars.Contains(e.KeyChar)) {
-                e.Handled = true;
-            }
+            if (e.KeyChar == Backspace) {
+            } else {
+                if (invalidFileChars.Contains(e.KeyChar)) {
+                    e.Handled = true;
+                }
+            } 
         }
 
         private void TBExtRename_KeyPress(object sender, KeyPressEventArgs e) {
-            if (invalidFileChars.Contains(e.KeyChar)) {
-                e.Handled = true;
+            if (e.KeyChar == Backspace) {
+            } else {
+                if (invalidFileChars.Contains(e.KeyChar)) {
+                    e.Handled = true;
+                }
             }
         }
         #endregion
