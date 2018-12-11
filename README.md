@@ -10,4 +10,4 @@ With this program you can rename a bunch of files at the same time. You can add 
 
 When you use option, you can see the new name and extension in the list view at the collumn `New name` and `New ext.`
 
-<p align="middle" ><img src="/images/renamer.png" alt="Renamer prog" width="800"></p>
+<p align="middle" ><img src="/images/renamer.png" alt="Renamer prog" width="850"></p>
