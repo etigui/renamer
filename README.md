@@ -15,4 +15,5 @@ When you use option, you can see the new name and extension in the list view at 
 
 ## Get exec
 
-[Renamer.exe](/src/Renamer/Renamer/bin/Release/Renamer.exe)
+<a href="/src/Renamer/Renamer/bin/Release/Renamer.exe" download>Renamer.exe</a>
+
