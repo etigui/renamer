@@ -1,0 +1,12 @@
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\bin\Release\Renamer.exe.config
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\bin\Release\Renamer.exe
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\bin\Release\Renamer.pdb
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\bin\Release\MetroFramework.dll
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\obj\Release\Renamer.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\obj\Release\Renamer.Renamer.resources
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\obj\Release\Renamer.Properties.Resources.resources
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\obj\Release\Renamer.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\obj\Release\Renamer.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\obj\Release\Renamer.csproj.CopyComplete
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\obj\Release\Renamer.exe
+C:\Users\Admin\Documents\GitHub\renamer\src\Renamer\Renamer\obj\Release\Renamer.pdb
