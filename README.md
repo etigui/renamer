@@ -12,6 +12,6 @@ When you use option, you can see the new name and extension in the list view at 
 
 <p align="middle" ><img src="/images/renamer.png" alt="Renamer prog" width="850"></p>
 
-## Get exec
+[//]: <> (## Get exec)
 
-[Renamer.exe](/src/Renamer/Renamer/bin/Debug/Renamer.exe)
+[//]: <> ([Renamer.exe](/src/Renamer/Renamer/bin/Debug/Renamer.exe))
